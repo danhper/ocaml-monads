@@ -1,0 +1,17 @@
+opam-version: "1.2"
+name: "monads"
+version: "1.0"
+maintainer: "Ivan Gotovchits <ivg@ieee.org>"
+authors: "BAP Team"
+homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
+bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
+license: "MIT"
+build: [
+  ["jbuilder" "build" "--root" "." "-j" jobs "@install"]
+]
+
+depends: [
+  "core_kernel" {>= "v0.10.0" & <"v0.11.0"}
+  "jbuilder"    {build & = "1.0+beta18"}
+]
