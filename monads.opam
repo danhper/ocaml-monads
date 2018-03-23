@@ -12,6 +12,6 @@ build: [
 ]
 
 depends: [
-  "core_kernel" {>= "v0.10.0" & <"v0.11.0"}
+  "core_kernel" {>= "v0.10.0" & <"v0.12.0"}
   "jbuilder"    {build & >= "1.0+beta18"}
 ]
