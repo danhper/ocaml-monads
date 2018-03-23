@@ -728,7 +728,11 @@ module Std : sig
 
         (** [all_ignore cs] performs all computations in [cs] in an
             unspecified order, and discards the results. *)
-        val all_ignore : ('a,'e) m t -> (unit,'e) m
+        val all_ignore : ('a,'e) m t -> (unit,'e) m [@@deprecated "[since 2018-03] Use [all_unit]"]
+
+        (** [all_unit cs] performs all computations in [cs] in an
+            unspecified order, and discards the results. *)
+        val all_unit : ('a,'e) m t -> (unit,'e) m
 
         (** [sequence cs] performs all computations in [cs] from left
             to right.  *)
@@ -845,7 +849,11 @@ module Std : sig
 
         (** [all_ignore cs] performs all computations in [cs] in an
             unspecified order, and discards the results. *)
-        val all_ignore : 'a m t -> unit m
+        val all_ignore : 'a m t -> unit m [@@deprecated "[since 2018-03] Use [all_unit]"]
+
+        (** [all_unit cs] performs all computations in [cs] in an
+            unspecified order, and discards the results. *)
+        val all_unit : 'a m t -> unit m
 
         (** [sequence cs] performs all computations in [cs] from left
             to right.  *)

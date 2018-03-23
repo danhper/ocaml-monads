@@ -172,7 +172,8 @@ module Monad = struct
         let iter xs ~f = fold xs ~init:() ~f:(fun () x -> f x)
 
         let all_ignore = iter ~f:Fn.ignore
-        let sequence = all_ignore
+        let all_unit = iter ~f:Fn.ignore
+        let sequence = all_unit
 
         let reduce xs ~f = fold xs ~init:None ~f:(fun acc y ->
             match acc with
@@ -271,7 +272,8 @@ module Monad = struct
     let join = M.join
     let ignore_m = M.ignore_m
     let all = M.all
-    let all_ignore = M.all_ignore
+    let all_ignore = M.all_unit
+    let all_unit = M.all_unit
   end
 
   (* the intended usage of this module is
@@ -297,7 +299,8 @@ module Monad = struct
     let join = M.join
     let ignore_m = M.ignore_m
     let all = M.all
-    let all_ignore = M.all_ignore
+    let all_ignore = M.all_unit
+    let all_unit = M.all_unit
   end
 
   (* this module provides a fast and dirty translation from a minimal
@@ -369,6 +372,7 @@ module Ident
       include M.Collection.Eager(T)
       let all = ident
       let all_ignore = ignore
+      let all_unit = ignore
       let iter xs ~f = fold xs ~init:() ~f:(fun () x -> f x)
       let fold = fold
     end
@@ -377,6 +381,7 @@ module Ident
       include M.Collection.Delay(T)
       let all = ident
       let all_ignore = ignore
+      let all_unit = ignore
       let iter xs ~f = fold xs ~init:() ~f:(fun () x -> f x)
       let fold = fold
     end
@@ -398,6 +403,7 @@ module Ident
     include List
     let all = ident
     let all_ignore = ignore
+    let all_unit = ignore
   end
 
   module Seq = struct
@@ -414,6 +420,7 @@ module Ident
     include Sequence
     let all = ident
     let all_ignore = ignore
+    let all_unit = ignore
   end
 
   module Syntax = struct
@@ -442,6 +449,7 @@ module Ident
   end
 
   let all_ignore = ignore
+  let all_unit = ignore
   let all = ident
   let ignore_m = ignore
   let join = ident

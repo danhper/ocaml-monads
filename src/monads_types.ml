@@ -115,7 +115,8 @@ module Collection = struct
     type ('a,'e) m
     type 'a t
     val all : ('a,'e) m t -> ('a t, 'e) m
-    val all_ignore : ('a,'e) m t -> (unit,'e) m
+    val all_ignore : ('a,'e) m t -> (unit,'e) m [@@deprecated "[since 2018-03] Use [all_unit]"]
+    val all_unit : ('a,'e) m t -> (unit,'e) m
     val sequence : (unit,'e) m t -> (unit,'e) m
     val map : 'a t -> f:('a -> ('b,'e) m) -> ('b t,'e) m
     val iter : 'a t -> f:('a -> (unit,'e) m) -> (unit,'e) m
@@ -138,7 +139,8 @@ module Collection = struct
     type 'a t
 
     val all : 'a m t -> 'a t m
-    val all_ignore : 'a m t -> unit m
+    val all_ignore : 'a m t -> unit m [@@deprecated "[since 2018-03] Use [all_unit]"]
+    val all_unit : 'a m t -> unit m
     val sequence : unit m t -> unit m
     val map : 'a t -> f:('a -> 'b m) -> 'b t m
     val iter : 'a t -> f:('a -> unit m) -> unit m
